@@ -17,29 +17,58 @@ type AutoCompleteProps<T> = {
 
 const ListWrapper = styled.ul`
   width: 100%;
+  max-height: 238px;
   margin: 0;
   padding: 0;
   list-style: none;
+  overflow-y: auto;
+  color: #333;
+
+  /* WebKit browsers */
+  &::-webkit-scrollbar {
+    width: 8px; /* width of vertical scrollbar */
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #ffffff; /* track is now white */
+    border-radius: 4px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #c0c0c0; /* thumb color */
+    border-radius: 4px;
+    border: 2px solid #ffffff; /* gives padding effect with white border */
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background-color: #a0a0a0; /* hover color */
+  }
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #c0c0c0 #ffffff; /* thumb color, track color */
 `;
 
-const AutoInput = styled.input`
+const AutoInput = styled.input<{ focused: boolean }>`
   width: 100%;
   border: none;
+  border-bottom: ${(props) => (props.focused ? "1px solid #dddddd" : "none")};
   color: #333;
   padding: 12px;
   padding-right: 32px;
   background: transparent;
   box-sizing: border-box;
-
+  font-size: 14px;
+  line-height: 20px;
   &:focus-visible {
     outline: none;
   }
 `;
 
 const Component = styled.div<{ focused?: boolean }>`
-  width: 400px;
+  width: 288px;
   border-radius: 4px;
-  border: ${(props) => (props.focused ? "2px" : "1px")} solid #0a98df;
+  border: ${(props) => (props.focused ? "2px" : "1px")} solid #bbbbbb;
 `;
 
 const InputWrapper = styled.div`
@@ -91,6 +120,7 @@ const AutoComplete = <T,>({
     <Component ref={wrapperRef} focused={open}>
       <InputWrapper>
         <AutoInput
+          focused={open}
           type="text"
           role="combobox"
           name="autocomplete_input"

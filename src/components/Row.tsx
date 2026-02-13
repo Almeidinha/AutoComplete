@@ -7,17 +7,16 @@ const RowWrapper = styled.li<{ interactive: boolean }>`
   padding: 8px 4px;
   align-items: center;
   box-sizing: border-box;
-  border-top: 1px solid #0a98df;
   ${(props) =>
     props.interactive &&
     `
     cursor: pointer;
     &:hover {
-      background: #f0f8ff;
+      background: #F4F4F4;
     }
     &:focus {
       outline: none;
-      background: #f0f8ff;
+      background: #F4F4F4;
     }
   `}
 `;

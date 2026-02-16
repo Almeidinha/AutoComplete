@@ -72,13 +72,16 @@ export default defineConfig([
 ]);
 ```
 
-running tjhe project:
-
 install dependencies:
 
 ```js
 npm install
+```
 
+Run it!!!
+
+
+```js
 npm run dev
 ```
 

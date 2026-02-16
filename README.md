@@ -86,7 +86,6 @@ npm run dev
 
 Run tests:
 
-````
+```js
 npm run test
 ```
-````

@@ -97,7 +97,7 @@ const ClearButton = styled.button`
 const AutoComplete = <T,>({
   options,
   loading,
-  placeholder = "Search for an Address or Eircode",
+  placeholder = "Select a value...",
   debounceDelay = 400,
   getOptionLabel,
   onSearch,
@@ -146,7 +146,7 @@ const AutoComplete = <T,>({
       </InputWrapper>
 
       {open && (
-        <>
+        <ListWrapper role="listbox">
           {!inputValue && !loading && options.length === 0 && (
             <Row>Start typing...</Row>
           )}
@@ -156,9 +156,8 @@ const AutoComplete = <T,>({
           {!loading && inputValue && options.length === 0 && (
             <Row>No results found</Row>
           )}
-
-          <ListWrapper role="listbox">
-            {options.map((option, index) => {
+          {!loading &&
+            options.map((option, index) => {
               const label = getOptionLabel(option);
               return (
                 <Row
@@ -173,8 +172,7 @@ const AutoComplete = <T,>({
                 </Row>
               );
             })}
-          </ListWrapper>
-        </>
+        </ListWrapper>
       )}
     </Component>
   );

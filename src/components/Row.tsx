@@ -24,7 +24,7 @@ const RowWrapper = styled.li<{ interactive: boolean }>`
 type RowProps = {
   children: ReactNode;
   value?: string;
-  onSelect?: (line1: string) => void;
+  onSelect?: (value: string) => void;
 };
 
 const Row = ({ children, value, onSelect }: RowProps) => {
@@ -38,7 +38,11 @@ const Row = ({ children, value, onSelect }: RowProps) => {
       role="option"
       tabIndex={0}
       onClick={handleSelect}
-      onKeyDown={(e: React.KeyboardEvent) => {
+      onMouseDown={(e: React.MouseEvent<HTMLLIElement>) => {
+        e.preventDefault();
+        handleSelect();
+      }}
+      onKeyDown={(e: React.KeyboardEvent<HTMLLIElement>) => {
         if (e.key === "Enter") {
           handleSelect();
         }

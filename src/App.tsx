@@ -16,7 +16,7 @@ function App() {
     <AutoComplete<Address>
       options={data}
       loading={loading}
-      placeholder="Search for an address..."
+      placeholder="Search for an Address or Eir code"
       onSearch={setQuery}
       getOptionLabel={buildLabel}
       onSelect={(address) => console.log(address)}
